@@ -1,5 +1,7 @@
 # Multi-Blockchain Wallet in Python
 
+![](coins.jpeg)
+
 ## Context
 
 There aren't as many tools available in Python for managing multiple type of currencies in one wallet. For this activity we are using the command line tool, hd-wallet-derive that supports not only BIP32, BIP39, and BIP44, but also supports non-standard derivation paths for the most popular wallets out there today.
