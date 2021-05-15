@@ -73,5 +73,5 @@ IMAGE here
 5. Create a file called wallet.py -- this will be your universal wallet script.
 
 
-## Code to Create and Send Transactions 
+## Create and Send Transactions 
 
