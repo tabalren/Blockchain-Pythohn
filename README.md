@@ -1,49 +1,28 @@
 # Multi-Blockchain Wallet in Python
 
-![](coins.jpeg)
+![image](https://user-images.githubusercontent.com/74678703/118403076-bf5f8a00-b63a-11eb-9d99-0c22a29a5ef5.png)
+
 
 ## Context
 
 There aren't as many tools available in Python for managing multiple type of currencies in one wallet. For this activity we are using the command line tool, hd-wallet-derive that supports not only BIP32, BIP39, and BIP44, but also supports non-standard derivation paths for the most popular wallets out there today.
 
-hd-wallet-derive is a "universal" wallet and can manage billions of addresses across 300+ coins.
+HD-wallet-derive is a "universal" wallet and can manage billions of addresses across 300+ coins.
 
-We will only get 2 coins working: Ethereum and Bitcoin Testnet. Ethereum keys are the same format on any network, so the Ethereum keys should work with a custom network or testnet.
+We will only get 1 coin working: Bitcoin Testnet. 
 
 The attached code will allow you to do the following:
 1. Clone and install hd-wallet-derive
 2. Derive wallet keys for Bitcoin Testnet and Ether only 
 3. Create and send transactions 
 
-## HD Derive Wallet Install Guide - macOS Only
+## Dependencies
 
-This guide serves as a step by step process for setting up the hd-wallet-derive library used to derive BIP32 addresses and private keys for Bitcoin and other alternative coins or "altcoins."
+- PHP must be installed on your operating system.
+- You will need to clone the [hd-wallet-derive tool](https://utoronto.bootcampcontent.com/utoronto-bootcamp/utor-tor-fin-pt-11-2020-u-c/-/blob/master/Homework/19-Blockchain-Python/Instructions/Resources/HD_Wallet_Derive_Install_Guide.md).
+- [bit](https://ofek.dev/bit/) Python Bitcoin library.
+- [web3.py](https://github.com/ethereum/web3.py) Python Ethereum library.
 
-Note: The hd-wallet-derive library is written in the PHP language; therefore, you will be required to first set up PHP on your machines before installing and then running the hd-wallet-derive library.
-
-1. Begin by opening a fresh terminal. 
-2. With your terminal open, cd into your folder where you want to install your hd-wallet-derive tool and run the following code:
-
-```  git clone https://github.com/dan-da/hd-wallet-derive
-  cd hd-wallet-derive
-  curl https://getcomposer.org/installer -o installer.php
-  php installer.php
-  php composer.phar install
-```
-
-3. You should now have a folder called hd-wallet-derive containing the PHP library!
-
-4. To verify that you have installed it correctly, cd into your hd-wallet-derive folder and run the following command: 
-
-``` ./hd-wallet-derive.php -g --key=xprv9tyUQV64JT5qs3RSTJkXCWKMyUgoQp7F3hA1xzG6ZGu6u6Q9VMNjGr67Lctvy5P8oyaYAL9CAWrUE9i6GoNMKUga5biW6Hx4tws2six3b9c --numderive=3 --preset=bitcoincore --cols=path,address --path-change
-```
-
-5. If installation was successful, you should see output similar to what you see in the following image:
-
-![hd-wallet-derive-execute](https://user-images.githubusercontent.com/74678703/118374321-6daaf700-b589-11eb-8c08-7639726d3ebb.png)
-
-
-### Congratulations! The hd-wallet-derive library should now be working and good to go!
 
 ## Setup Project 
 
@@ -63,15 +42,40 @@ Mac Users: Run the following command:
 
 4. Test that you can run the ./derive script properly, by running the following command:
 
-``` ./derive --key=xprv9zbB6Xchu2zRkf6jSEnH9vuy7tpBuq2njDRr9efSGBXSYr1QtN8QHRur28QLQvKRqFThCxopdS1UD61a5q6jGyuJPGLDV9XfYHQto72DAE8 --cols=path,address --coin=ZEC --numderive=3 -g
-```
+``` ./derive --key=xprv9zbB6Xchu2zRkf6jSEnH9vuy7tpBuq2njDRr9efSGBXSYr1QtN8QHRur28QLQvKRqFThCxopdS1UD61a5q6jGyuJPGLDV9XfYHQto72DAE8 --cols=path,address --coin=ZEC --numderive=3 -g ```
 
 The output should match what you see below:
 
-IMAGE here 
-
-5. Create a file called wallet.py -- this will be your universal wallet script.
+![image](https://user-images.githubusercontent.com/74678703/118402758-5592b080-b639-11eb-90bf-4ca9ee44051b.png)
 
 
-## Create and Send Transactions 
+5. Use the file called wallet.py -- this will be your universal wallet script and will allow you to do the following:
+- Derive wallet keys for Bitcoin Testnet and Etheruem 
+- Link the transaction signing libraries 
+- Create a transaction using def create_tx
+- Send a transaction using def send_tx
+
+## Send Transactions 
+
+Now, you should be able to fund this wallet using a Bitcoin testnet faucet.
+
+1. Open up a new terminal window inside of wallet.
+2. Then run the command python to open the Python shell.
+3. Within the Python shell, run the command from wallet import *. This will allow you to access the functions in wallet.py interactively.
+4. You'll need to set the account with  ``` priv_key_to_account ``` and use ``` send_tx``` to send transactions. See screenshot below of what you're code should look like to execute the transaction:
+
+![image](https://user-images.githubusercontent.com/74678703/118403192-444aa380-b63b-11eb-9a6a-1ee1e6ab7f64.png)
+
+
+
+* For a Bitcoin Testnet transaction:
+
+
+1. Fund a BTCTEST address using this [testnet faucet](https://coinfaucet.eu/en/btc-testnet/?__cf_chl_jschl_tk__=666803c0e676bab635cb4d99a392c66435bf5586-1621178096-0-AZGhGOqK3fd6ijVLLzOjYNW0HDJHQdhfFhvTVbuyBTy_KGYwdLre5wpuvUPHx8jSKF8hKyutvQ2k26Td80OHARif4rmdSqZuWT698EsAjlGPjDnDrfxvyqYZAb4XNoVWD9OsqpFpFEoMvsHITc7y4euWmFho2phjji1gf0TCk3TRsiurCytKA8yVAuwkItANuGrDVZ4sxT4YbHnBeYqVSNaYV4ciUvxhhMZ9F38zBsyN7LSdguZXjZabJ1wo-9AimlmAooOJsFopBVk-zAy25HkVNLrNWbUcSJZvp9018MpREJejigVuQl-lhbWCcyRhlJ2jEPltq7DGHx05oogV2ChpgElJF1zX2fJZiGqdQzgJbxR5W7qDeL6256rvM0YUCPFSp8MyelsiGNGOARD7WWnjaD6efzlPapxsOSO4Ec1c).
+2. Use a [block explorer](https://tbtc.bitaps.com/) to watch transactions on the address.
+3. Send a transaction to another testnet address (either one of your own, or the faucet's).
+
+You should be able to see the following confirmation of the transaction like so:
+
+![image](https://user-images.githubusercontent.com/74678703/118402992-58da6c00-b63a-11eb-8b75-0a9e3ebc53bb.png)
 
