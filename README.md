@@ -24,7 +24,7 @@ The attached code will allow you to do the following:
 - [web3.py](https://github.com/ethereum/web3.py) Python Ethereum library.
 
 
-## Setup Project 
+## Project Setup 
 
 1. Create a project directory called wallet and cd into it.
 
