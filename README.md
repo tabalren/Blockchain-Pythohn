@@ -5,9 +5,7 @@
 
 ## Context
 
-There aren't as many tools available in Python for managing multiple types of currencies in one wallet. For this activity we are using the command line tool, HD-wallet-derive that supports not only BIP32, BIP39, and BIP44, but also supports non-standard derivation paths for the most popular wallets out there today.
-
-HD-wallet-derive is a "universal" wallet and can manage billions of addresses across 300+ coins.
+Using the command line tool, HD-wallet-derive, this activity will enable you to build a wallet that can manage several coins. It supports not only BIP32, BIP39, and BIP44, but also supports non-standard derivation paths for the most popular wallets out there today.
 
 We will only get 1 coin working: Bitcoin Testnet. 
 
